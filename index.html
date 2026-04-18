@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Edit Ritual — London's most considered shopping experience</title>
+    <meta name="description" content="Private personal stylists in London. By appointment only. Bond Street, Selfridges, Harrods, and Mayfair's finest boutiques.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@200;300;400&display=swap" rel="stylesheet">
+
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg: #FAF7F2;
+            --text: #1A1A1A;
+            --accent: #C8A97E;
+            --muted: rgba(26, 26, 26, 0.6);
+            --divider: rgba(200, 169, 126, 0.45);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            font-weight: 300;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            letter-spacing: -0.01em;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* ---- Layout helpers ---- */
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .divider {
+            width: 40px;
+            height: 1px;
+            background-color: var(--accent);
+            margin: 2.5rem auto;
+            border: none;
+        }
+
+        /* ---- Hero ---- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 3rem 2rem 4rem;
+            text-align: center;
+        }
+
+        .wordmark {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 300;
+            letter-spacing: 0.42em;
+            color: var(--text);
+            padding-top: 1rem;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+            max-width: 900px;
+            padding: 2rem 0;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.2rem, 6vw, 4.4rem);
+            line-height: 1.08;
+            max-width: 16ch;
+            margin-bottom: 2rem;
+        }
+
+        .hero .sub {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-weight: 300;
+            font-size: clamp(1.05rem, 2vw, 1.35rem);
+            color: var(--muted);
+            margin-bottom: 3rem;
+        }
+
+        .cta {
+            display: inline-block;
+            font-family: 'Inter', sans-serif;
+            font-weight: 300;
+            font-size: 0.78rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--text);
+            background: transparent;
+            border: 1px solid var(--accent);
+            padding: 1.15rem 2.6rem;
+            cursor: pointer;
+            transition: background-color 0.6s ease, color 0.6s ease, letter-spacing 0.6s ease;
+        }
+
+        .cta:hover {
+            background-color: var(--accent);
+            color: var(--bg);
+            letter-spacing: 0.35em;
+        }
+
+        .hero-foot {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 0.95rem;
+            color: var(--muted);
+        }
+
+        /* ---- Concept Section ---- */
+        .concept {
+            padding: 8rem 0 7rem;
+        }
+
+        .concept-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 4rem;
+        }
+
+        @media (min-width: 800px) {
+            .concept-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 3.5rem;
+            }
+        }
+
+        .concept-block {
+            text-align: center;
+            padding: 0 1rem;
+        }
+
+        .concept-block .mark {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.15em;
+            margin-bottom: 1.2rem;
+            display: block;
+        }
+
+        .concept-block h3 {
+            font-size: 1.9rem;
+            margin-bottom: 1.4rem;
+        }
+
+        .concept-block p {
+            font-size: 0.98rem;
+            color: var(--muted);
+            max-width: 28ch;
+            margin: 0 auto;
+        }
+
+        /* ---- Form Section ---- */
+        .form-section {
+            padding: 6rem 0 8rem;
+            border-top: 1px solid var(--divider);
+        }
+
+        .form-wrap {
+            max-width: 620px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .form-wrap h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .form-wrap .intro {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1.15rem;
+            color: var(--muted);
+            margin-bottom: 3.5rem;
+            max-width: 42ch;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        form {
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-size: 0.7rem;
+            font-weight: 300;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--text);
+            margin-bottom: 0.85rem;
+        }
+
+        label .req {
+            color: var(--accent);
+            margin-left: 0.3rem;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid rgba(26, 26, 26, 0.2);
+            padding: 0.7rem 0;
+            font-family: 'Inter', sans-serif;
+            font-weight: 300;
+            font-size: 1rem;
+            color: var(--text);
+            transition: border-color 0.4s ease;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-bottom-color: var(--accent);
+        }
+
+        textarea {
+            min-height: 110px;
+            resize: vertical;
+        }
+
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.9rem;
+            margin-top: 0.4rem;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+            cursor: pointer;
+            font-size: 0.95rem;
+            color: var(--text);
+            padding: 0.2rem 0;
+        }
+
+        .radio-option input[type="radio"] {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 14px;
+            height: 14px;
+            border: 1px solid var(--accent);
+            border-radius: 50%;
+            background: transparent;
+            cursor: pointer;
+            position: relative;
+            flex-shrink: 0;
+            transition: background-color 0.3s ease;
+        }
+
+        .radio-option input[type="radio"]:checked::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: var(--accent);
+        }
+
+        .submit {
+            align-self: center;
+            margin-top: 1.5rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 300;
+            font-size: 0.78rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--text);
+            background: transparent;
+            border: 1px solid var(--accent);
+            padding: 1.15rem 2.6rem;
+            cursor: pointer;
+            transition: background-color 0.6s ease, color 0.6s ease, letter-spacing 0.6s ease;
+        }
+
+        .submit:hover {
+            background-color: var(--accent);
+            color: var(--bg);
+            letter-spacing: 0.35em;
+        }
+
+        .thank-you {
+            display: none;
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .thank-you.visible {
+            display: block;
+        }
+
+        .thank-you p {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1.5rem;
+            color: var(--text);
+            max-width: 36ch;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+
+        /* ---- Footer ---- */
+        footer {
+            padding: 3rem 2rem 4rem;
+            text-align: center;
+            border-top: 1px solid var(--divider);
+        }
+
+        footer .mark {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 300;
+            letter-spacing: 0.32em;
+            text-transform: uppercase;
+            color: var(--text);
+            margin-bottom: 1rem;
+        }
+
+        footer .copy {
+            font-size: 0.75rem;
+            color: var(--muted);
+            letter-spacing: 0.1em;
+        }
+
+        /* ---- Scroll fade-in ---- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 1.4s ease, transform 1.4s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal.delay-1 { transition-delay: 0.15s; }
+        .reveal.delay-2 { transition-delay: 0.3s; }
+        .reveal.delay-3 { transition-delay: 0.45s; }
+
+        @media (prefers-reduced-motion: reduce) {
+            .reveal {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+            html { scroll-behavior: auto; }
+        }
+
+        @media (max-width: 600px) {
+            .hero { padding: 2rem 1.5rem 3rem; }
+            .container { padding: 0 1.5rem; }
+            .concept { padding: 5rem 0 4rem; }
+            .form-section { padding: 4rem 0 5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="wordmark reveal">THE EDIT RITUAL</div>
+
+        <div class="hero-content">
+            <h1 class="reveal delay-1">London's most considered shopping experience.</h1>
+            <p class="sub reveal delay-2">Private stylists. Bond Street. By appointment only.</p>
+            <a href="#request" class="cta reveal delay-3">Request an Invitation</a>
+        </div>
+
+        <div class="hero-foot reveal delay-3">Mayfair &middot; Bond Street &middot; Knightsbridge</div>
+    </section>
+
+    <!-- CONCEPT -->
+    <section class="concept">
+        <div class="container">
+            <hr class="divider reveal">
+            <div class="concept-grid">
+                <div class="concept-block reveal">
+                    <span class="mark">I.</span>
+                    <h3>The Stylist</h3>
+                    <p>Hand-picked industry experts who guide your edit across London's finest boutiques.</p>
+                </div>
+                <div class="concept-block reveal delay-1">
+                    <span class="mark">II.</span>
+                    <h3>The Ritual</h3>
+                    <p>A half-day appointment. Considered selections. Champagne, if you wish.</p>
+                </div>
+                <div class="concept-block reveal delay-2">
+                    <span class="mark">III.</span>
+                    <h3>The Edit</h3>
+                    <p>A wardrobe shaped with intention, not impulse.</p>
+                </div>
+            </div>
+            <hr class="divider reveal" style="margin-top: 5rem;">
+        </div>
+    </section>
+
+    <!-- FORM -->
+    <section class="form-section" id="request">
+        <div class="container">
+            <div class="form-wrap">
+                <div id="form-content" class="reveal">
+                    <h2>Request an Invitation</h2>
+                    <p class="intro">We're opening our doors to a small first list. Tell us a little, and we'll be in touch.</p>
+
+                    <form id="waitlist-form" action="https://formspree.io/f/PLACEHOLDER" method="POST">
+                        <div class="field">
+                            <label for="name">Full Name<span class="req">*</span></label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+
+                        <div class="field">
+                            <label for="email">Email<span class="req">*</span></label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="field">
+                            <label for="occasion">What occasion or need brings you to The Edit Ritual?<span class="req">*</span></label>
+                            <textarea id="occasion" name="occasion" required></textarea>
+                        </div>
+
+                        <div class="field">
+                            <label>What would you expect to invest in a half-day appointment?<span class="req">*</span></label>
+                            <div class="radio-group">
+                                <label class="radio-option">
+                                    <input type="radio" name="investment" value="Under £500" required>
+                                    <span>Under &pound;500</span>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="investment" value="£500–£1000">
+                                    <span>&pound;500 &ndash; &pound;1,000</span>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="investment" value="£1000–£2000">
+                                    <span>&pound;1,000 &ndash; &pound;2,000</span>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="investment" value="£2000+">
+                                    <span>&pound;2,000+</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label for="location">Where are you based?<span class="req">*</span></label>
+                            <input type="text" id="location" name="location" required>
+                        </div>
+
+                        <button type="submit" class="submit">Submit Request</button>
+                    </form>
+                </div>
+
+                <div id="thank-you" class="thank-you">
+                    <hr class="divider">
+                    <p>Thank you. We'll be in touch personally within a few days.</p>
+                    <hr class="divider">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="mark">The Edit Ritual &mdash; London &mdash; By appointment only.</div>
+        <div class="copy">&copy; 2026</div>
+    </footer>
+
+    <script>
+        // Scroll reveal
+        const revealElements = document.querySelectorAll('.reveal');
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    io.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+        revealElements.forEach((el) => io.observe(el));
+
+        // Form submission
+        const form = document.getElementById('waitlist-form');
+        const formContent = document.getElementById('form-content');
+        const thankYou = document.getElementById('thank-you');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const data = new FormData(form);
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: data,
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                // Show thank-you message regardless of response (placeholder endpoint won't actually accept)
+                formContent.style.display = 'none';
+                thankYou.classList.add('visible');
+                thankYou.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            } catch (err) {
+                // Still show the thank-you state gracefully
+                formContent.style.display = 'none';
+                thankYou.classList.add('visible');
+                thankYou.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        });
+    </script>
+</body>
+</html>
